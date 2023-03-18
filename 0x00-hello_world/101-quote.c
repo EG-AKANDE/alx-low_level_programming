@@ -8,6 +8,6 @@
 int main(void)
 {
 	write(STDOUT_FILENO, "and that piece of art is useful\" - ", 36);
-	write(STDOUT_FILENO, "Dora Korpar, 2015-10-19\n", 27);
+	write(STDOUT_FILENO, "Dora Korpar, 2015-10-19\n", 28);
 	return (1);
 }
