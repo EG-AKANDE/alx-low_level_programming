@@ -11,3 +11,4 @@ int main(void)
     write(STDOUT_FILENO, "Dora Korpar, 2015-10-19", 24);
     return (1);
 }
+
