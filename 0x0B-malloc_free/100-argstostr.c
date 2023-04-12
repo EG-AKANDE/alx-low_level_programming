@@ -11,44 +11,39 @@
 char *argstostr(int ac, char **av)
 
 {
+	int a, b, length = 0, abs_length = 0;
 	char *str;
-	int a, b, length, abs_length;
 
-	/* take on edge */
 	if (ac == 0 || av == NULL)
 	return (NULL);
 
-	/* Calc str length */
-	abs_length = 0;
 	for (a = 0; a < ac; a++)
-{
-	length = 0;
-	while (av[a][length] != '\0')
+	{
+	for (b = 0; av[a][b]; b++)
 	length++;
-	/* 1 added for '\n' */
+
+	/* plus 1 citing newline */
 	abs_length += length + 1;
+	length = 0;
 }
 
-	/* apportion new str mem */
-	str = malloc(abs_length * sizeof(char));
+	str = malloc(sizeof(char) * abs_length + 1);
 	if (str == NULL)
 	return (NULL);
 
-	/* duplicate strs into new mem */
-	b = 0;
+	length = 0;
 	for (a = 0; a < ac; a++)
 {
-	length = 0;
-	while (av[a][length] != '\0')
+	for (b = 0; av[a][b]; b++)
 {
-	str[b] = av[a][length];
-	b++;
+	str[length] = av[a][b];
 	length++;
 }
-	str[b] = '\n';
-	b++;
+	/* recall newline char */
+	str[length] = '\n';
+	length++;
 }
-	str[b] = '\0';
+	str[length] = '\0';
 
 	return (str);
 }
