@@ -13,7 +13,7 @@ list_t *add_node_end(list_t **head, const char *str)
 {
 	list_t *node_two, *not_perm;
 
-	if (str == NULL)
+	if (head == NULL || str == NULL)
 	return (NULL);
 
 	node_two = malloc(sizeof(list_t));
@@ -27,10 +27,16 @@ list_t *add_node_end(list_t **head, const char *str)
 	return (NULL);
 }
 
+	node_two->len = 0;
+	while (node_two->str[node_two->len] != '\0')
+	node_two->len++;
+
 	node_two->next = NULL;
 
 	if (*head == NULL)
+{
 	*head = node_two;
+}
 	else
 {
 	not_perm = *head;
