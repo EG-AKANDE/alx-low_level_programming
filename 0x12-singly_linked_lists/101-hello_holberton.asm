@@ -3,15 +3,16 @@ section .data
 	format db "%s\n", 0
 
 section .text
-	global my_asm
-	my_asm:
-		mov rdi, msg		; load `msg` string address to `rdi`
-		mov rsi, 16		; length to `rsi`
-		mov rax, printf		; load `printf` to `rax`
-		call rax		; call printf
+	global main_two
+	main_two:
+		mov edi, 0		; first argument: file descriptor (0 for stdout)
+		mov rsi, format		; second argument: format string
+		mov rdx, msg		; third argument: message string
+		mov eax, 0		; zero out rax
+		call printf		; call printf
 
-		mov rax, 60		; load exit status to `rax`
-		xor rdi, rdi
+		mov eax, 60		; system call for exit
+		xor edi, edi		; exit status
 		syscall			; exit program
 
 extern printf
